@@ -1,0 +1,1 @@
+export const FETCH_APP_DATA = 'Fetch initial app data'
