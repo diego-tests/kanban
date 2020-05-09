@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
-import { FETCH_APP_DATA } from './actionTypes'
-import { SET_INITIAL_DATA } from './mutationTypes'
+import { FETCH_APP_DATA } from './_actionTypes'
+import { SET_INITIAL_DATA } from './_mutationTypes'
 
 Vue.use(Vuex)
 
@@ -27,7 +27,5 @@ export default new Vuex.Store({
       
       commit(SET_INITIAL_DATA, data)
     },
-  },
-  modules: {
   },
 })

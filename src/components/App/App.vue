@@ -1,18 +1,29 @@
 <template>
     <div id="app">
-        Canyon Kanban
-        <AppStages />
+        <h1>
+            Canyon Kanban
+        </h1>
+        <AppStages
+            v-if="initialData"
+            :stages="initialData.stages"
+        />
     </div>
 </template>
 
 <script>
-import { FETCH_APP_DATA } from '../../store/actionTypes'
+import { mapState } from 'vuex'
+import { FETCH_APP_DATA } from '../../store/_actionTypes'
 import AppStages from './AppStages/AppStages'
 
 export default {
   name: 'App',
   components: {
     AppStages,
+  },
+  computed: {
+    ...mapState({
+      initialData: state=> state.initialData,
+    }),
   },
   created() {
     this.fetchData()  
