@@ -2,6 +2,7 @@ import { shallowMount, createLocalVue } from '@vue/test-utils'
 import Vuex from 'vuex'
 import App from './App.vue'
 import AppStages from './AppStages/AppStages.vue'
+import DisplayOptions from './DisplayOptions/DisplayOptions.vue'
 import { mockActions, mockInitialdata } from '../../testMocks'
 import { FETCH_APP_DATA } from '../../store/_actionTypes'
 
@@ -42,5 +43,16 @@ describe('App.vue', () => {
     })
 
     expect(appWrapper.contains(AppStages)).toBeTruthy()
+  }) 
+  
+  it('Shows display options', () => {
+    let appWrapper = shallowMount(App, { store, 
+      localVue,
+      computed: {
+        stagesData: ()=> null,
+      },
+    })
+    expect(appWrapper.contains(DisplayOptions)).toBeTruthy()
+
   }) 
 })

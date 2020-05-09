@@ -3,6 +3,7 @@
         <h1>
             Canyon Kanban
         </h1>
+        <DisplayOptions />
         <AppStages
             v-if="stagesData"
             :stages="stagesData"
@@ -14,11 +15,13 @@
 import { mapState } from 'vuex'
 import { FETCH_APP_DATA } from '../../store/_actionTypes'
 import AppStages from './AppStages/AppStages'
+import DisplayOptions from './DisplayOptions/DisplayOptions'
 
 export default {
   name: 'App',
   components: {
     AppStages,
+    DisplayOptions,
   },
   computed: {
     ...mapState({
