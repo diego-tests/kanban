@@ -4,8 +4,8 @@
             Canyon Kanban
         </h1>
         <AppStages
-            v-if="initialData"
-            :stages="initialData.stages"
+            v-if="stagesData"
+            :stages="stagesData"
         />
     </div>
 </template>
@@ -22,7 +22,7 @@ export default {
   },
   computed: {
     ...mapState({
-      initialData: state=> state.initialData,
+      stagesData: state=> state.stagesData,
     }),
   },
   created() {
