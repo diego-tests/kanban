@@ -1,13 +1,19 @@
 <template>
     <div id="app">
         Canyon Kanban
+        <AppStages />
     </div>
 </template>
 
 <script>
 import { FETCH_APP_DATA } from '../../store/actionTypes'
+import AppStages from './AppStages/AppStages'
+
 export default {
   name: 'App',
+  components: {
+    AppStages,
+  },
   created() {
     this.fetchData()  
   },
