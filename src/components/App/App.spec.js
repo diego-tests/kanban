@@ -37,7 +37,7 @@ describe('App.vue', () => {
     appWrapper = shallowMount(App, { store, 
       localVue,
       computed: {
-        stagesData: ()=> mockInitialdata,
+        stagesData: ()=> mockInitialdata.stages,
       },
     })
 

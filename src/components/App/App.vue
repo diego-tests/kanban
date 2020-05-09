@@ -5,7 +5,7 @@
         </h1>
         <AppStages
             v-if="stagesData"
-            :stages="stagesData.stages"
+            :stages="stagesData"
         />
     </div>
 </template>
