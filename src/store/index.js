@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
+import ui from './ui'
 import { 
   FETCH_APP_DATA,
   CHANGE_STAGE_CARDS_ORDER, 
@@ -18,6 +19,7 @@ export default new Vuex.Store({
     stagesData: null,
     lastFrontUpdate: new Date(),
   }),
+  modules: { ui },
   mutations: {
     [SET_INITIAL_DATA](state, data) {
       state.stagesData = data
