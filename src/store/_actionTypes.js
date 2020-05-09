@@ -1,2 +1,5 @@
+//api
 export const FETCH_APP_DATA = 'Fetch initial app data'
 export const CHANGE_STAGE_CARDS_ORDER = 'Change Stage cards order'
+export const CREATE_CARD = 'Create card'
+export const ADD_NEW_CARD = 'Add new card'

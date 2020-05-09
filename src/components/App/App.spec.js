@@ -20,7 +20,9 @@ beforeAll(()=>{
 describe('App.vue', () => {
 
   it('Load stages and matter cards from the server', () => {
-    shallowMount(App, { store, localVue },
+    shallowMount(App, { store, localVue, computed: {
+      stagesData: ()=> mockInitialdata.stages,
+    } },
     )
     expect(actions[FETCH_APP_DATA]).toBeCalled()
   }) 

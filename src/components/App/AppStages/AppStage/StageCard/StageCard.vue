@@ -31,14 +31,4 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
-.stage-card {
-    border: solid 1px black;
-    margin: 1rem auto;
-}
-
-.color {
-    min-height: 1rem;
-    width: 100%;
-}
-</style>
+<style lang="scss" src="../styles/_card.scss" scoped/>

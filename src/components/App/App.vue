@@ -25,7 +25,7 @@ export default {
   },
   computed: {
     ...mapState({
-      stagesData: state=> state.stagesData,
+      stagesData: state=> state.api.stagesData,
     }),
   },
   created() {

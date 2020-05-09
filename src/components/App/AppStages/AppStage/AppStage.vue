@@ -1,6 +1,9 @@
 <template>
     <section class="app-stage">
         <h2>{{ stage.title }}</h2>
+        <CreateCard 
+            :stage-id="stage.id" 
+        />
         <draggable 
             v-model="draggableCards"
             group="stages"
@@ -16,6 +19,7 @@
 <script>
 import draggable from 'vuedraggable'
 import StageCard from './StageCard/StageCard'
+import CreateCard from './CreateCard/CreateCard'
 import { CHANGE_STAGE_CARDS_ORDER } from '../../../../store/_actionTypes'
 
 export default {
@@ -28,6 +32,7 @@ export default {
   components: {
     draggable,
     StageCard,
+    CreateCard,
   },
   computed: {
     draggableCards: {
