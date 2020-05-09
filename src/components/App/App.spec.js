@@ -28,7 +28,7 @@ describe('App.vue', () => {
     let appWrapper = shallowMount(App, { store, 
       localVue,
       computed: {
-        initialData: ()=> null,
+        stagesData: ()=> null,
       },
     })
     expect(appWrapper.contains(AppStages)).toBeFalsy()
@@ -37,7 +37,7 @@ describe('App.vue', () => {
     appWrapper = shallowMount(App, { store, 
       localVue,
       computed: {
-        initialData: ()=> mockInitialdata,
+        stagesData: ()=> mockInitialdata,
       },
     })
 
