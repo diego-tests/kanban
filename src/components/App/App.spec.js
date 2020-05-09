@@ -1,14 +1,46 @@
-import { shallowMount } from '@vue/test-utils'
-import App from '@/components/App/App.vue'
+import { shallowMount, createLocalVue } from '@vue/test-utils'
+import Vuex from 'vuex'
+import App from './App.vue'
+import AppStages from './AppStages/AppStages.vue'
+import { mockActions, mockInitialdata } from '../../testMocks'
+import { FETCH_APP_DATA } from '../../store/_actionTypes'
+
+const localVue = createLocalVue()
+let store, actions;
+
+localVue.use(Vuex)
+
+
+beforeAll(()=>{
+  actions = { ...mockActions }
+  store = new Vuex.Store({ actions })
+})
 
 describe('App.vue', () => {
+
   it('Load stages and matter cards from the server', () => {
-    const fetchData = jest.fn()
-    const wrapper = shallowMount(App, {
-      methods: {
-          fetchData
-      }
+    shallowMount(App, { store, localVue },
+    )
+    expect(actions[FETCH_APP_DATA]).toBeCalled()
+  }) 
+  
+  it('Displays stages when data is available', () => {
+    let appWrapper = shallowMount(App, { store, 
+      localVue,
+      computed: {
+        initialData: ()=> null,
+      },
     })
-    expect(fetchData).toBeCalled()
-  })
+    expect(appWrapper.contains(AppStages)).toBeFalsy()
+
+
+    appWrapper = shallowMount(App, { store, 
+      localVue,
+      computed: {
+        initialData: ()=> mockInitialdata,
+      },
+    })
+
+    expect(appWrapper.contains(AppStages)).toBeTruthy()
+  }) 
 })
