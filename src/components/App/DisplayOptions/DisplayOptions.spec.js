@@ -22,7 +22,7 @@ describe('DisplayOptions.vue', () => {
       },
     }
     const store = new Vuex.Store({ mutations, state })
-    const displayOptions = shallowMount(DisplayOptions, { store, localVue })
+    const displayOptions = shallowMount(DisplayOptions, { store, localVue, stubs: ['VisibilitySvg', 'CheckSvg'] })
 
     const color = displayOptions.find('button[data-testid="color"]')
     const references = displayOptions.find('button[data-testid="references"]')
@@ -42,7 +42,7 @@ describe('DisplayOptions.vue', () => {
       },
     }
     const store = new Vuex.Store({ mutations, state })
-    const displayOptions = shallowMount(DisplayOptions, { store, localVue })
+    const displayOptions = shallowMount(DisplayOptions, { store, localVue, stubs: ['VisibilitySvg', 'CheckSvg'] })
 
     const color = displayOptions.find('button[data-testid="color"]')
     

@@ -15,7 +15,7 @@ localVue.use(Vuex)
 beforeAll(()=>{
   actions = { ...mockActions }
   store = new Vuex.Store({ actions })
-  propsData= {stageId: 'unique id'}
+  propsData= { stageId: 'unique id' }
 })
 
 
@@ -23,7 +23,7 @@ describe('CreateCard.vue', () => {
 
   it('dispatches Card creation action and hides the creation interface when clicking create button', async () => {
     const createCard = mount(CreateCard, {
-      store, localVue, propsData,
+      store, localVue, propsData, stubs: ['CreateSVG'],
     })
     
     createCard.find('button[data-testid="create"]').trigger('click')
@@ -45,7 +45,7 @@ describe('CreateCard.vue', () => {
   }) 
   it('Clears component data after card creation', async () => {
     const createCard = mount(CreateCard, {
-      store, localVue, propsData,
+      store, localVue, propsData, stubs: ['CreateSVG'],
     })
     
     createCard.find('button[data-testid="create"]').trigger('click')
