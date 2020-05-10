@@ -125,6 +125,8 @@ export default {
     onCreate() {
       this.$store.dispatch(CREATE_CARD, { stageId: this.stageId, card: this.newCard })
       this.isCreating = false
+      this.newTitle = ''
+      this.newRef = ''
     },
     updateColor({ hex }) {
       this.newColor = hex
