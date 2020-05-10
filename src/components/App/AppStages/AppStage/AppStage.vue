@@ -73,7 +73,6 @@ export default {
 <style lang="scss" scoped>
 .app-stage {
     border: solid 1px black;
-    margin: 20px;
     max-width: 100%;
     min-height: 10rem;
     padding: 0.5rem;

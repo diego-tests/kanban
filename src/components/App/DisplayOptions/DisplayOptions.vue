@@ -1,12 +1,14 @@
 <template>
     <div class="display-options">
         <button
+            class="button"
             data-testid="color"
             @click="toggleColorDisplay"
         >
             {{ colorAction }} matter colors
         </button>
         <button
+            class="button"
             data-testid="references"
             @click="toggleRefsDisplay"
         >
@@ -40,3 +42,10 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+.display-options {
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto;
+}
+</style>
