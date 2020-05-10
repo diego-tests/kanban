@@ -43,6 +43,28 @@ describe('CreateCard.vue', () => {
     expect(form.exists()).toBeFalsy()
 
   }) 
+  it('Clears component data after card creation', async () => {
+    const createCard = mount(CreateCard, {
+      store, localVue, propsData,
+    })
+    
+    createCard.find('button[data-testid="create"]').trigger('click')
+    
+    await localVue.nextTick()
+
+    createCard.find('input[data-testid="title"]').setValue('title')
+    createCard.find('input[data-testid="reference"]').setValue(1)
+    
+    expect(createCard.vm.newTitle).toBe('title')
+    expect(createCard.vm.newRef).toBe('1')
+    
+    createCard.find('form[data-testid="create"]').trigger('submit')
+    await flushPromises()
+    
+    expect(createCard.vm.newTitle).toBe('')
+    expect(createCard.vm.newRef).toBe('')
+
+  }) 
   
   
   
