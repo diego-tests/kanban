@@ -8,6 +8,7 @@
             v-model="draggableCards"
             group="stages"
             :move="onMove"
+            class="drop-zone"
         >
             <StageCard
                 v-for="card in draggableCards"
@@ -79,9 +80,14 @@ export default {
     max-width: 100%;
     min-height: 10rem;
     padding: 1rem;
+    width: 100%;
 }
 
 h2 {
     font-weight: 800;
+}
+
+.drop-zone {
+    min-height: 6rem;
 }
 </style>

@@ -48,11 +48,12 @@ export default {
 @use '../../scss/fonts';
 
 #app {
+    margin: auto;
+    max-width: 120rem;
     padding: 1rem;
 }
 
 h1 {
-    font-family: fonts.$muli;
     font-size: 4rem;
     font-weight: 900;
 }

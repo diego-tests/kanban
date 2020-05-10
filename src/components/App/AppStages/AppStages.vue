@@ -1,10 +1,12 @@
 <template>
     <section class="stages">
-        <AppStage
+        <div
             v-for="stage in stages"
             :key="stage.id"
-            :stage="stage"
-        />
+            class="stage-wrapper"
+        >
+            <AppStage :stage="stage" />
+        </div>
     </section>
 </template>
 <script>
@@ -21,3 +23,22 @@ export default {
   },
 }
 </script>
+<style lang="scss" scoped>
+@use '../../../scss/responsive' as *;
+
+.stages {
+    margin: auto;
+    width: 100%;
+
+    @include breakpoint($small) {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.stage-wrapper {
+    @include breakpoint($small) {
+        width: calc((100% / 3) - 1rem);
+    }
+}
+</style>
