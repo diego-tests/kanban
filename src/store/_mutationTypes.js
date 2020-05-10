@@ -7,3 +7,4 @@ export const SET_LAST_DRAGGED_CARD = 'Set last dragged card'
 //ui
 export const TOGGLE_SHOW_COLORS = 'Set show colors'
 export const TOGGLE_SHOW_REFS = 'Set show refs'
+export const SET_IS_DRAGGING = 'Set dragging'

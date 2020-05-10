@@ -1,5 +1,8 @@
 <template>
-    <section class="app-stage">
+    <section
+        class="app-stage"
+        :class="{'-dragging': isDragging}"
+    >
         <h2>{{ stage.title }}</h2>
         <div
             class="counter"
@@ -15,6 +18,8 @@
             group="stages"
             :move="onMove"
             class="drop-zone"
+            @end="onEnd"
+            @start="onStart"
         >
             <StageCard
                 v-for="card in draggableCards"
@@ -53,6 +58,7 @@ export default {
   computed: {
     ...mapState({
       lastDraggedCard: state=> state.api.lastDraggedCard,
+      isDragging: state=> state.ui.isDragging,
     }),
     draggableCards: {
       get() {
@@ -75,10 +81,17 @@ export default {
       this.updatedCard = { ...draggedContext.element, order: draggedContext.futureIndex }
       this.$store.commit(SET_LAST_DRAGGED_CARD, this.updatedCard)
     },
+    onStart() {
+      this.$store.commit(SET_IS_DRAGGING, true)
+    },
+    onEnd() {
+      this.$store.commit(SET_IS_DRAGGING, false)
+    },
   },
 }
 </script>
 <style lang="scss" scoped>
+@use '../../../../scss/responsive' as *;
 @use '../../../../scss/color';
 
 .app-stage {
@@ -96,5 +109,13 @@ h2 {
 
 .drop-zone {
     min-height: 6rem;
+
+    .-dragging & {
+        border: dotted 0.3rem color.$orange;
+    }
+
+    @include breakpoint($small) {
+        min-height: calc(100vh - 28rem);
+    }
 }
 </style>

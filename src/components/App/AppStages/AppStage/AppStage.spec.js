@@ -9,7 +9,10 @@ describe('AppStage.vue', () => {
   it('Shows one StageCard instance per stage', () => {
     const stage = mockInitialdata.stages[0]
     const appStage = shallowMount(AppStage, {
-      propsData: {
+        computed: {
+            isDragging: ()=>false
+        },
+        propsData: {
         stage,
       },
     })
@@ -22,7 +25,10 @@ describe('AppStage.vue', () => {
   it('Displays a `Create card` component', () => {
     const stage = mockInitialdata.stages[0]
     const appStage = shallowMount(AppStage, {
-      propsData: {
+        computed: {
+            isDragging: ()=>false
+        },
+        propsData: {
         stage,
       },
     })
@@ -35,7 +41,10 @@ describe('AppStage.vue', () => {
   it('Displays the number of cards in stage', async () => {
     const stage = mockInitialdata.stages[0]
     const appStage = shallowMount(AppStage, {
-      propsData: {
+        computed: {
+            isDragging: ()=>false
+        },
+        propsData: {
         stage,
       },
     })
