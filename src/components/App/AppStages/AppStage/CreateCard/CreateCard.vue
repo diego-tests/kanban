@@ -2,6 +2,7 @@
     <div class="create-card">
         <button 
             v-show="!isCreating"
+            data-testid="create"
             @click="isCreating = true"
         >
             Create card
@@ -123,6 +124,7 @@ export default {
   methods: {
     onCreate() {
       this.$store.dispatch(CREATE_CARD, { stageId: this.stageId, card: this.newCard })
+      this.isCreating = false
     },
     updateColor({ hex }) {
       this.newColor = hex

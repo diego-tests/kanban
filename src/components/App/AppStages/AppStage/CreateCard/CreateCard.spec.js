@@ -21,25 +21,29 @@ beforeAll(()=>{
 
 describe('CreateCard.vue', () => {
 
-  it('dispatches Card creation action when clicking create button', async () => {
+  it('dispatches Card creation action and hides the creation interface when clicking create button', async () => {
     const createCard = mount(CreateCard, {
       store, localVue, propsData,
-      data() {
-        return {
-          isCreating: true,
-        }
-      },
     })
+    
+    createCard.find('button[data-testid="create"]').trigger('click')
+    await localVue.nextTick()
     createCard.find('input[data-testid="title"]').setValue('title')
     createCard.find('input[data-testid="reference"]').setValue(1)
 
-    const form = createCard.find('form[data-testid="create"]')
+    let form = createCard.find('form[data-testid="create"]')
     
     form.trigger('submit')
     await flushPromises()
+    
     expect(actions[CREATE_CARD]).toBeCalled()
 
+    form = createCard.find('form[data-testid="create"]')
+
+    expect(form.exists()).toBeFalsy()
+
   }) 
+  
   
   
 })
