@@ -5,7 +5,6 @@ import {
   CREATE_CARD, 
   ADD_NEW_CARD,
   GET_STAGE_INDEX_BY_ID,
-  UPDATE_CARD_POSITION,
   UPDATE_CARD,
 } from './_actionTypes'
 import { 
@@ -59,7 +58,7 @@ export default  {
     },
     
     /* eslint-disable no-unreachable */
-    async [UPDATE_CARD_POSITION]({ commit }, { stageId, card }) {
+    async [UPDATE_CARD]({ commit }, { stageId, card }) {
 
       commit(SET_LAST_DRAGGED_CARD, null)
 
@@ -101,23 +100,6 @@ export default  {
           // update card id here
         })
         /* eslint-enable no-unreachable */
-    },
-    async [UPDATE_CARD]({ state, dispatch, commit }, { stageId, updatedCard }) {
-      const stageIndex = await dispatch(GET_STAGE_INDEX_BY_ID, stageId)
-      const updatedCards = state.stagesData[stageIndex].cards.map(card=> {
-        if (card.id !== updatedCard.id) {
-          return card
-        }
-        return {
-          ...card,
-          ...updatedCard,
-        }
-      })
-
-      commit(SET_STAGE_CARDS_ORDER, { stageIndex, cards: updatedCards })
-
-      //Backend update should be done here
-
     },
   },
 }

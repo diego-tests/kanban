@@ -3,20 +3,7 @@
         :class="{'-no-color': !showColors}"
         class="stage-card"
     >
-        <h2
-            v-if="!isEditing" 
-            @click="editTitle"
-        >
-            {{ card.title }}
-        </h2>
-        <input
-            v-else
-            ref="input"
-            v-model="newTitle"
-            type="text"
-            @blur="updateTitle"
-            @keyup.enter="updateTitle"
-        >
+        <h2>{{ card.title }}</h2>
         <div
             :class="{'-hidden': !showRefs}"
             class="reference"
@@ -31,43 +18,18 @@
 </template>
 <script>
 import { mapState } from 'vuex'
-import { UPDATE_CARD } from '../../../../../store/_actionTypes'
 export default {
   props: {
     card: {
       type: Object,
       required: true,
     },
-    stageId: {
-      type: String,
-      required: true,
-    },
-  },
-  data() {
-    return {
-      isEditing: false,
-      newTitle: '',
-    }
   },
   computed: {
     ...mapState({
       showColors: state=> state.ui.showColors,
       showRefs: state=> state.ui.showRefs,
     }),
-  },
-  mounted() {
-    this.newTitle = this.card.title
-  },
-  methods: {
-    async editTitle() {
-      this.isEditing = true
-      await this.$nextTick()
-      this.$refs.input.focus()
-    },
-    updateTitle() {
-      this.isEditing = false
-      this.$store.dispatch(UPDATE_CARD, { stageId: this.stageId, updatedCard: { ...this.card, title: this.newTitle } } )
-    },
   },
 }
 </script>
