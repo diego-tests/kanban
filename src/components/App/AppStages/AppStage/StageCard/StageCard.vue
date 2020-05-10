@@ -35,7 +35,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .stage-card {
-    border: solid 1px black;
+    box-shadow: 0 0 2px black;
     margin: 1rem auto;
     padding: 0.5rem 0.5rem 1rem;
     position: relative;
@@ -64,6 +64,7 @@ export default {
 .reference {
     align-items: center;
     display: flex;
+    font-size: 1.2rem;
     height: 3rem;
     margin: 0.2rem 0;
     transform-origin: left center;
