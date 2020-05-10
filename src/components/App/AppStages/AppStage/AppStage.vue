@@ -7,6 +7,7 @@
         <draggable 
             v-model="draggableCards"
             group="stages"
+            :move="onMove"
         >
             <StageCard
                 v-for="card in draggableCards"
@@ -17,10 +18,12 @@
     </section>
 </template>
 <script>
+import { mapState } from 'vuex'
 import draggable from 'vuedraggable'
 import StageCard from './StageCard/StageCard'
 import CreateCard from './CreateCard/CreateCard'
-import { CHANGE_STAGE_CARDS_ORDER } from '../../../../store/_actionTypes'
+import { SET_LAST_DRAGGED_CARD } from '../../../../store/_mutationTypes'
+import { CHANGE_STAGE_CARDS_ORDER, UPDATE_CARD } from '../../../../store/_actionTypes'
 
 export default {
   props: {
@@ -34,21 +37,36 @@ export default {
     StageCard,
     CreateCard,
   },
+  data() {
+    return{
+      updatedCard: null,
+    }
+  },
   computed: {
+    ...mapState({
+      lastDraggedCard: state=> state.api.lastDraggedCard,
+    }),
     draggableCards: {
       get() {
         return this.stage.cards
       },
       set(cards) {
+        const isCardInCurrentStage = this.draggableCards.length <= cards.length
         this.$store.dispatch(CHANGE_STAGE_CARDS_ORDER, { stageId: this.stage.id, cards })
+
+        if (!isCardInCurrentStage || !this.lastDraggedCard) {
+          return
+        }
+
+        this.$store.dispatch(UPDATE_CARD, { stageId: this.stage.id, card: this.lastDraggedCard })
       },
     },
   },
   methods: {
-    // onPull(val) {
-        
-    //   console.log(val)
-    // },
+    onMove({ draggedContext }) {
+      this.updatedCard = { ...draggedContext.element, order: draggedContext.futureIndex }
+      this.$store.commit(SET_LAST_DRAGGED_CARD, this.updatedCard)
+    },
   },
 }
 </script>
