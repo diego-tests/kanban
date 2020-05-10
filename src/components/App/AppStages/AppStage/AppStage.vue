@@ -20,6 +20,7 @@
                 v-for="card in draggableCards"
                 :key="card.id"
                 :card="card"
+                :stage-id="stage.id"
             />
         </draggable>
     </section>
@@ -30,7 +31,7 @@ import draggable from 'vuedraggable'
 import StageCard from './StageCard/StageCard'
 import CreateCard from './CreateCard/CreateCard'
 import { SET_LAST_DRAGGED_CARD } from '../../../../store/_mutationTypes'
-import { CHANGE_STAGE_CARDS_ORDER, UPDATE_CARD } from '../../../../store/_actionTypes'
+import { CHANGE_STAGE_CARDS_ORDER, UPDATE_CARD_POSITION } from '../../../../store/_actionTypes'
 
 export default {
   props: {
@@ -65,7 +66,7 @@ export default {
           return
         }
 
-        this.$store.dispatch(UPDATE_CARD, { stageId: this.stage.id, card: this.lastDraggedCard })
+        this.$store.dispatch(UPDATE_CARD_POSITION, { stageId: this.stage.id, card: this.lastDraggedCard })
       },
     },
   },
