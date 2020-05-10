@@ -134,4 +134,3 @@ export default {
   },
 }
 </script>
-<style lang="scss" src="../styles/_card.scss"/>

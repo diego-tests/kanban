@@ -71,10 +71,17 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@use '../../../../scss/color';
+
 .app-stage {
-    border: solid 1px black;
+    box-shadow: 0 0 3px color.$black;
+    margin: 1rem auto;
     max-width: 100%;
     min-height: 10rem;
-    padding: 0.5rem;
+    padding: 1rem;
+}
+
+h2 {
+    font-weight: 800;
 }
 </style>
