@@ -58,13 +58,14 @@ export default  {
     },
     
     /* eslint-disable no-unreachable */
-    async [UPDATE_CARD]({ commit, state }, { stageId, card }) {
+    async [UPDATE_CARD]({ commit }, { stageId, card }) {
 
       commit(SET_LAST_DRAGGED_CARD, null)
 
       return
       // if we had a backend...
       axios.put(`${process.env.VUE_APP_API_ENDPOINT}/cards/${card.id}`, { stageId, order: card.order })
+      /* eslint-disable-next-line no-unused-vars */
         .then(res=> {
           // TODO: discuss response with backend
         })
@@ -94,6 +95,7 @@ export default  {
       return 
       // if we had a backend...
       axios.post(`${process.env.VUE_APP_API_ENDPOINT}/cards`, payload)
+      /* eslint-disable-next-line no-unused-vars */
         .then((res)=> {
           // update card id here
         })
