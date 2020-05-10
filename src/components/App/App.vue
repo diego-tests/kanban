@@ -1,14 +1,16 @@
 <template>
-    <div id="app">
+    <section id="app">
         <h1>
             Canyon Kanban
         </h1>
-        <DisplayOptions />
-        <AppStages
-            v-if="stagesData"
-            :stages="stagesData"
-        />
-    </div>
+        <div class="content">
+            <DisplayOptions />
+            <AppStages
+                v-if="stagesData"
+                :stages="stagesData"
+            />
+        </div>
+    </section>
 </template>
 
 <script>
@@ -41,8 +43,19 @@ export default {
 
 <style lang="scss">
 @use '../../scss/global';
+</style>
+<style lang="scss" scoped>
+@use '../../scss/fonts';
 
 #app {
-    font-family: sans-serif;
+    margin: auto;
+    max-width: 120rem;
+    padding: 1rem;
 }
+
+h1 {
+    font-size: 4rem;
+    font-weight: 900;
+}
+
 </style>

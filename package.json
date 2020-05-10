@@ -11,10 +11,12 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "bulma": "^0.8.2",
     "core-js": "^3.6.4",
     "vee-validate": "^3.3.0",
     "vue": "^2.6.11",
     "vue-color": "^2.7.1",
+    "vue-svg-loader": "^0.16.0",
     "vuedraggable": "^2.23.2",
     "vuex": "^3.1.3"
   },

@@ -8,6 +8,7 @@
             v-model="draggableCards"
             group="stages"
             :move="onMove"
+            class="drop-zone"
         >
             <StageCard
                 v-for="card in draggableCards"
@@ -71,11 +72,22 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+@use '../../../../scss/color';
+
 .app-stage {
-    border: solid 1px black;
-    margin: 20px;
+    box-shadow: 0 0 3px color.$black;
+    margin: 1rem auto;
     max-width: 100%;
     min-height: 10rem;
-    padding: 0.5rem;
+    padding: 1rem;
+    width: 100%;
+}
+
+h2 {
+    font-weight: 800;
+}
+
+.drop-zone {
+    min-height: 6rem;
 }
 </style>

@@ -1,5 +1,7 @@
 @use 'reset';
 @use 'responsive' as *;
+@use 'fonts';
+@use 'color';
 
 html {
     box-sizing: border-box;
@@ -14,13 +16,23 @@ html {
 }
 
 body {
-    font-family: sans-serif;
+    font-family: fonts.$muli;
     font-size: 1.6rem;
     max-width: 100vw;
     overflow-x: hidden;
-    padding: 54px 0 0;
+    padding: 2.5rem 0 0;
 
     @include breakpoint($large) {
         padding: 80px 0 0;
+    }
+}
+
+button {
+    background: none;
+    border: none;
+    border-radius: 0.3rem;
+
+    &:disabled {
+        opacity: 0.6;
     }
 }
