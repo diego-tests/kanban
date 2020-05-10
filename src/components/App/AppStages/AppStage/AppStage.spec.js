@@ -32,4 +32,28 @@ describe('AppStage.vue', () => {
     expect(card.exists()).toBe(true)
   }) 
   
+  it('Displays the number of cards in stage', async () => {
+    const stage = mockInitialdata.stages[0]
+    const appStage = shallowMount(AppStage, {
+      propsData: {
+        stage,
+      },
+    })
+
+    const counter = appStage.find('[data-testid="counter"]')
+
+    expect(counter.exists()).toBe(true)
+    expect(parseInt(counter.text())).toBe(stage.cards.length)
+    
+    const newStage = {
+        ...stage,
+        cards: stage.cards.filter((card, index)=> !index),
+    }
+    
+    appStage.setProps({ stage: { ...newStage } })
+
+    await appStage.vm.$nextTick()
+    expect(parseInt(counter.text())).toBe(newStage.cards.length)
+  }) 
+  
 })

@@ -1,6 +1,12 @@
 <template>
     <section class="app-stage">
         <h2>{{ stage.title }}</h2>
+        <div
+            class="counter"
+            data-testid="counter"
+        >
+            {{ draggableCards.length }}
+        </div>
         <CreateCard 
             :stage-id="stage.id" 
         />
